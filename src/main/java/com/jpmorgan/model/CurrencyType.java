@@ -2,7 +2,7 @@ package com.jpmorgan.model;
 
 public enum CurrencyType
 {
-    SGP("GSP"), AED("AED");
+    SGP("GSP"), AED("AED"), SAR("SAR");
 
     private String value;
 

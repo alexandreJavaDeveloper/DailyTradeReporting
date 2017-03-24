@@ -1,6 +1,8 @@
 package com.jpmorgan.model;
 
-import java.util.Date;
+import com.jpmorgan.model.FinancialType;
+
+import java.time.LocalDate;
 
 /**
  * Represents the instructions sent by various clients to JP Morgan to execute in the international market.
@@ -9,25 +11,26 @@ public class Instruction
 {
     private String entity;
 
-    private Instruction financialEntity;
+    private final FinancialType financialType;
 
     private float agreedFx;
 
     private CurrencyType currencyType;
 
-    private Date instructionDate;
+    private LocalDate instructionDate;
 
-    private Date settlementDate;
+    private LocalDate settlementDate;
 
     private int units;
 
     private float pricePerUnit;
 
-    public Instruction(final String entity, final Instruction financialEntity, final float agreedFx, final CurrencyType currencyType,
-        final Date instructionDate, final Date settlementDate, final int units, final float pricePerUnit)
+    public Instruction(final String entity, final FinancialType financialType, final float agreedFx, final CurrencyType currencyType,
+        final LocalDate instructionDate, final LocalDate settlementDate, final int units, final float pricePerUnit)
     {
+        super();
         this.entity = entity;
-        this.financialEntity = financialEntity;
+        this.financialType = financialType;
         this.agreedFx = agreedFx;
         this.currencyType = currencyType;
         this.instructionDate = instructionDate;
@@ -44,16 +47,6 @@ public class Instruction
     public void setEntity(final String entity)
     {
         this.entity = entity;
-    }
-
-    public Instruction getFinancialEntity()
-    {
-        return this.financialEntity;
-    }
-
-    public void setFinancialEntity(final Instruction financialEntity)
-    {
-        this.financialEntity = financialEntity;
     }
 
     public float getAgreedFx()
@@ -76,22 +69,22 @@ public class Instruction
         this.currencyType = currencyType;
     }
 
-    public Date getInstructionDate()
+    public LocalDate getInstructionDate()
     {
         return this.instructionDate;
     }
 
-    public void setInstructionDate(final Date instructionDate)
+    public void setInstructionDate(final LocalDate instructionDate)
     {
         this.instructionDate = instructionDate;
     }
 
-    public Date getSettlementDate()
+    public LocalDate getSettlementDate()
     {
         return this.settlementDate;
     }
 
-    public void setSettlementDate(final Date settlementDate)
+    public void setSettlementDate(final LocalDate settlementDate)
     {
         this.settlementDate = settlementDate;
     }
@@ -119,7 +112,7 @@ public class Instruction
     @Override
     public String toString()
     {
-        return "FinancialEntity [entity=" + this.entity + ", financialEntity=" + this.financialEntity + ", agreedFx=" + this.agreedFx + ", currencyType="
+        return "Instruction [entity=" + this.entity + ", financialType=" + this.financialType + ", agreedFx=" + this.agreedFx + ", currencyType="
             + this.currencyType + ", instructionDate=" + this.instructionDate + ", settlementDate=" + this.settlementDate + ", units=" + this.units
             + ", pricePerUnit=" + this.pricePerUnit + "]";
     }
