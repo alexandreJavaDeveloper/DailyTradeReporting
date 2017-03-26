@@ -12,7 +12,7 @@
 - git clone  https://github.com/alexandreJavaDeveloper/DailyTradeReporting.git
 - cd DailyTradeReporting/
 - mvn clean package
-- At this stage, will be logged out in the console the Instruction Report.
+- At this stage, will be logged out in the console the Instruction Report. This uses all structure of the code of this project.
 
 ## Test Coverage
 - 100%
