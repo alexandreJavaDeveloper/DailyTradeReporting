@@ -28,7 +28,6 @@ public class Instruction implements Comparable<Instruction>
 	public Instruction(final String entity, final FinancialType financialType, final float agreedFx, final CurrencyType currencyType,
 			final LocalDate instructionDate, final LocalDate settlementDate, final int units, final float pricePerUnit)
 	{
-		super();
 		this.entity = entity;
 		this.financialType = financialType;
 		this.agreedFx = agreedFx;

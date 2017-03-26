@@ -26,6 +26,8 @@ public class InstructionRules
 	/**
 	 * The settlement date should be changed to the next working day.
 	 *
+	 * This method change the behavior of {@value instruction}
+	 *
 	 * @param instruction
 	 * @throws InvalidSettlementDateException
 	 */
@@ -39,7 +41,7 @@ public class InstructionRules
 	}
 
 	/**
-	 * Check if the @param instruction is a working day to be available to make a trade.
+	 * Check if the {@value instruction} is a working day to be available to make a trade.
 	 *
 	 * To check it, needs to test the following rules:
 	 *      - A work week starts Monday and ends Friday, unless the currency of the trade is AED or SAR, where

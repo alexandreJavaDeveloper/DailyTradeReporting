@@ -10,6 +10,7 @@ import org.junit.Test;
 import com.jpmorgan.model.CurrencyType;
 import com.jpmorgan.model.FinancialType;
 import com.jpmorgan.model.Instruction;
+import com.jpmorgan.report.InstructionReport;
 
 public class InstructionReportTest
 {
@@ -46,8 +47,9 @@ public class InstructionReportTest
 	}
 
 	@Test
-	public void test()
+	public void testShowReport()
 	{
-
+		final InstructionReport report = new InstructionReport();
+		report.showReport(this.trades);
 	}
 }
