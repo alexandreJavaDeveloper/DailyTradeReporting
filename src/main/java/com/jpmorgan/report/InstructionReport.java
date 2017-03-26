@@ -7,12 +7,15 @@ import com.jpmorgan.model.FinancialType;
 import com.jpmorgan.model.Instruction;
 import com.jpmorgan.rules.InstructionRules;
 
+/**
+ * Prepare and print the output text in the console of instructions data (trades) received by clients.
+ */
 public class InstructionReport
 {
 	// used to showing in the report formated by 2 fields after the comma (.). e.g: 2.727,65
 	private final DecimalFormat decimalFormat;
 
-	// helper to create the table using ascii in the console as output text
+	// helper to create the table using ASCII in the console as output text
 	private final String leftAlignFormat = "| %-17s | %-17s | %-19s | %-19s |%n";
 
 	public InstructionReport()
@@ -41,9 +44,10 @@ public class InstructionReport
 			if (!InstructionRules.isAvailableTrade(instruction))
 				InstructionRules.updateSettlementDateToNextWorkingDay(instruction);
 
+			final float amountOfTradeAsUSD = InstructionRules.getAmountOfTradeAsUSD(instruction);
+
 			if (FinancialType.BUY.equals(instruction.getFinancialType()))
 			{
-				final float amountOfTradeAsUSD = InstructionRules.getAmountOfTradeAsUSD(instruction);
 				amountUSDOutgoing += amountOfTradeAsUSD;
 
 				if (rankingAmountUSDOutgoing < amountUSDOutgoing)
@@ -54,7 +58,6 @@ public class InstructionReport
 			}
 			else if (FinancialType.SELL.equals(instruction.getFinancialType())) // else if to ensure will have BUY and SELL only
 			{
-				final float amountOfTradeAsUSD = InstructionRules.getAmountOfTradeAsUSD(instruction);
 				amountUSDIncoming += amountOfTradeAsUSD;
 
 				if (rankingAmountUSDIncoming < amountOfTradeAsUSD)
@@ -65,6 +68,12 @@ public class InstructionReport
 			}
 		}
 
+		this.printConsole(amountUSDIncoming, amountUSDOutgoing, rankingEntityNameIncoming, rankingEntityNameOutgoing);
+	}
+
+	private void printConsole(final float amountUSDIncoming, final float amountUSDOutgoing, final String rankingEntityNameIncoming,
+			final String rankingEntityNameOutgoing)
+	{
 		System.out.println("\n# Amount in USD settled:");
 
 		System.out.format("+-------------------+-------------------+---------------------+---------------------+%n");

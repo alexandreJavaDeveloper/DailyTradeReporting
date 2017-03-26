@@ -2,12 +2,10 @@ package com.jpmorgan.model;
 
 import java.time.LocalDate;
 
-import com.jpmorgan.rules.InstructionRules;
-
 /**
  * Represents the instructions sent by various clients to JP Morgan to execute in the international market.
  */
-public class Instruction implements Comparable<Instruction>
+public class Instruction
 {
 	private final String entity;
 
@@ -58,11 +56,6 @@ public class Instruction implements Comparable<Instruction>
 		return this.currencyType;
 	}
 
-	public LocalDate getInstructionDate()
-	{
-		return this.instructionDate;
-	}
-
 	public LocalDate getSettlementDate()
 	{
 		return this.settlementDate;
@@ -89,11 +82,5 @@ public class Instruction implements Comparable<Instruction>
 		return "Instruction [entity=" + this.entity + ", financialType=" + this.financialType + ", agreedFx=" + this.agreedFx + ", currencyType="
 				+ this.currencyType + ", instructionDate=" + this.instructionDate + ", settlementDate=" + this.settlementDate + ", units=" + this.units
 				+ ", pricePerUnit=" + this.pricePerUnit + "]";
-	}
-
-	@Override
-	public int compareTo(final Instruction another)
-	{
-		return (int) InstructionRules.getAmountOfTradeAsUSD(this) - (int)InstructionRules.getAmountOfTradeAsUSD(another);
 	}
 }

@@ -11,6 +11,11 @@ import com.jpmorgan.model.Instruction;
  */
 public class InstructionRules
 {
+	private InstructionRules()
+	{
+		// do nothing
+	}
+
 	/**
 	 * Return USD amount of a trade.
 	 * The rule is: (Price per unit * Units * Agreed Fx)

@@ -125,4 +125,12 @@ public class InstructionRulesTest
 		// keep the same day of week
 		Assert.assertEquals(DayOfWeek.SUNDAY, instruction.getSettlementDate().getDayOfWeek());
 	}
+
+	@Test
+	public void testToStringInstruction()
+	{
+		final Instruction instruction = new Instruction("lets go", FinancialType.SELL, 16.20f, CurrencyType.SGP, LocalDate.now(), LocalDate.now(), 50, 100.00f);
+		Assert.assertEquals("Instruction [entity=lets go, financialType=SELL, agreedFx=16.2, currencyType=SGP, "
+				+ "instructionDate=2017-03-25, settlementDate=2017-03-25, units=50, pricePerUnit=100.0]", instruction.toString());
+	}
 }
