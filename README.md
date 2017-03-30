@@ -18,5 +18,4 @@
 - 100%
 
 ## TODO
-- The method showReport() of the class InstructionReport needs to check out the kind of financial type, and today is done by the 'if' command, where there is two types at the moment (SELL and BUY).
-- One choice is to use the Design Pattern Strategy https://sourcemaking.com/design_patterns/strategy, because if in the future needs more financial types, will be created more 'if' command, resulting in a bad maintenance.
+- Nothing in this moment.
